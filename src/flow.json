@@ -1,0 +1,39 @@
+{
+	"networks": {
+		"emulator": "127.0.0.1:3569",
+		"mainnet": "access.mainnet.nodes.onflow.org:9000",
+		"testnet": "access.devnet.nodes.onflow.org:9000"
+	},
+	"accounts": {
+		"emulator-account": {
+			"address": "f8d6e0586b0a20c7",
+			"key": "fb3d009176d530d58db62d54e154a3e1f9518f19fa8c7742279ecc141643fd6a"
+		},
+		"testnet-account":{
+			"address":"0xb7edc0f0ea3fbf8c",
+			"key":{
+				"type":"hex",
+				"index":0,
+				"signatureAlgorithm":"ECDSA_secp256k1",
+				"hashAlgorithm":"SHA3_256",
+				"privateKey":"cf04860162c02800d12f1310a543bf2b7ef7b3bb7bdd556a2c695747915a8eb8"
+			}
+		}
+	},
+	"contracts":{
+		"MyNFT":"./contracts/MyNFT.cdc",
+		"NonFungibleToken":"./contracts/NonFungibleToken.cdc",
+		"NFTMarketplace":"./contracts/NFTMarketplace.cdc"
+		
+	},
+	"deployments":{
+		"testnet":{
+			"testnet-account":[
+				"NonFungibleToken",
+				"MyNFT",
+				"NFTMarketplace"
+				
+			]
+		}
+	}
+}
