@@ -1,16 +1,16 @@
 export const getNFTsScript = `
-import ProjectR from 0x342967d90036e986
-import NonFungibleToken from 0x342967d90036e986
+import sbNFT from 0x65c1594f968945ee
+import NonFungibleToken from 0x631e88ae7f1d7c20
 
-pub fun main(account: Address): [&ProjectR.NFT?] {
-  let collection = getAccount(account).getCapability(/public/ProjectRCollection)
-                    .borrow<&ProjectR.Collection{NonFungibleToken.CollectionPublic, ProjectR.CollectionPublic}>()
+pub fun main(account: Address): [&sbNFT.NFT?] {
+  let collection = getAccount(account).getCapability(/public/Test1sbNFTCollection)
+                    .borrow<&sbNFT.Collection{NonFungibleToken.CollectionPublic, sbNFT.CollectionPublic}>()
                     ?? panic("Can't get the User's collection.")
 
-  let returnVals: [&ProjectR.NFT?] = []
+  let returnVals: [&sbNFT.NFT?] = []
   let ids = collection.getIDs()
   for id in ids {
-    returnVals.append(collection.borrowProjectR(id: id))
+    returnVals.append(collection.borrowsbNFT(id: id))
   }
 
   return returnVals

@@ -158,10 +158,9 @@ function NavScrollExample(props) {
                 onClick={getUserToken(props.address.addr)}
                 hidden
               ></button>
-              Token: <a style={{ color: "blue" }}>{Number(balance)} Rumble</a>
+              Balance: <a style={{ color: "blue" }}>{Number(balance)} FLOW</a>
               <a> </a>
-              Balance: <a style={{ color: "blue" }}>{Number(flow).toFixed(2)} FLOW</a>
-              <a> </a>
+            
               Address: <a style={{ color: "blue" }}>{props.address.addr}</a>
             </Navbar.Text>
           ) : null}

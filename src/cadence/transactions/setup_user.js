@@ -1,22 +1,22 @@
 export const setupUserTx = `
-import ProjectR from 0x342967d90036e986
-import NonFungibleToken from 0x342967d90036e986
+import NonFungibleToken from 0x631e88ae7f1d7c20
+import sbNFT from 0x65c1594f968945ee
 import FungibleToken from 0x9a0766d93b6608b7
-import Rumble from 0x342967d90036e986
-import BloxmithMarketplace from 0x342967d90036e986
+import FlowToken from 0x7e60df042a9c0868
+import sbMarketplace from 0x65c1594f968945ee
 
 transaction {
 
   prepare(acct: AuthAccount) {
-    acct.save(<- ProjectR.createEmptyCollection(), to: /storage/ProjectRCollection)
-    acct.link<&ProjectR.Collection{ProjectR.CollectionPublic, NonFungibleToken.CollectionPublic}>(/public/ProjectRCollection, target: /storage/ProjectRCollection)
-    acct.link<&ProjectR.Collection>(/private/ProjectRCollection, target: /storage/ProjectRCollection)
+    acct.save(<- sbNFT.createEmptyCollection(), to: /storage/Test1sbNFTCollection)
+    acct.link<&sbNFT.Collection{sbNFT.CollectionPublic, NonFungibleToken.CollectionPublic}>(/public/Test1sbNFTCollection, target: /storage/Test1sbNFTCollection)
+    acct.link<&sbNFT.Collection>(/private/Test1sbNFTCollection, target: /storage/Test1sbNFTCollection)
     
-    let ProjectRCollection = acct.getCapability<&ProjectR.Collection>(/private/ProjectRCollection)
-    let RumbleTokenVault = acct.getCapability<&Rumble.Vault{FungibleToken.Receiver}>(/public/RumblePublic)
+    let sbNFTCollection = acct.getCapability<&sbNFT.Collection>(/private/Test1sbNFTCollection)
+    let FlowTokenVault = acct.getCapability<&FlowToken.Vault{FungibleToken.Receiver}>(/public/Test1FlowTokenPublic)
     
-    acct.save(<- BloxmithMarketplace.createSaleCollection(ProjectRCollection: ProjectRCollection, TokenVault: RumbleTokenVault), to: /storage/ProjectRSaleCollection)
-    acct.link<&BloxmithMarketplace.SaleCollection{BloxmithMarketplace.SaleCollectionPublic}>(/public/ProjectRSaleCollection, target: /storage/ProjectRSaleCollection)
+    acct.save(<- sbMarketplace.createSaleCollection(sbNFTCollection: sbNFTCollection, TokenVault: FlowTokenVault), to: /storage/Test1sbNFTSaleCollection)
+    acct.link<&sbMarketplace.SaleCollection{sbMarketplace.SaleCollectionPublic}>(/public/Test1sbNFTSaleCollection, target: /storage/Test1sbNFTSaleCollection)
   }
 
   execute {

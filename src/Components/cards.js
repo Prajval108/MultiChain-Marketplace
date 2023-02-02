@@ -94,7 +94,7 @@ function BasicExample({ nftData, data, address }) {
       const transactionId = await fcl.mutate({
         cadence: purchaseTx,
         args: (arg, t) => [
-          arg("TestTxnId", t.String),
+          arg("TTxnId", t.String),
           arg(address, t.Address),
           arg(parseInt(id), t.UInt64),
         ],
@@ -173,7 +173,7 @@ function BasicExample({ nftData, data, address }) {
                 className="center"
                 style={{ "margin-left": "55px" }}
               >
-                Buy @{Number(data[nftData?.id])} Rumble
+                Buy @{Number(data[nftData?.id])} FLOW
               </Button>
             ) : (
               <Button

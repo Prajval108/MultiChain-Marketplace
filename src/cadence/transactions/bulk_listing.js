@@ -6,7 +6,7 @@ transaction(price: UFix64) {
   prepare(acct: AuthAccount) {
 
 
-    let saleCollection = acct.borrow<&NFTMarketplace.SaleCollection>(from: /storage/Test3MySaleCollection)
+    let saleCollection = acct.borrow<&NFTMarketplace.SaleCollection>(from: /storage/T3MySaleCollection)
                             ?? panic("This SaleCollection does not exist")
 
     let array = [13,5,15]
