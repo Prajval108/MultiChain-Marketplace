@@ -6,8 +6,8 @@ transaction () {
 
   prepare(acct: AuthAccount) {
    
-      acct.save(<- FlowToken.createEmptyVault(), to: /storage/Test1FlowTokenVault)
-      acct.link<&FlowToken.Vault{FungibleToken.Receiver, FungibleToken.Balance}>(/public/Test1FlowTokenVault, target: /storage/Test1FlowTokenVault)
+      acct.save(<- FlowToken.createEmptyVault(), to: /storage/Test6FlowTokenVault)
+      acct.link<&FlowToken.Vault{FungibleToken.Receiver, FungibleToken.Balance}>(/public/Test6FlowTokenVault, target: /storage/Test6FlowTokenVault)
     
   }
 

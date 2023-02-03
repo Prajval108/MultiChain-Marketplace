@@ -3,7 +3,7 @@ import "./App.css";
 import * as fcl from "@onflow/fcl";
 // import * as t from "@onflow/types";
 import { useState, useEffect } from "react";
-  import { getNFTsScript } from "./cadence/scripts/get_nfts.js";
+import { getNFTsScript } from "./cadence/scripts/get_nfts.js";
 import { getSaleNFTsScript } from "./cadence/scripts/get_sale_nfts";
 import Card from "./Components/cards";
 
@@ -17,22 +17,7 @@ function Collection(props) {
     getUserSaleNFTs();
   }, []);
 
-  // useEffect(()=> {
-  //   getData(0x342967d90036e986)
-  // }, [])
 
-  // const getData = async (address) => {
-  //   try {
-  //     const result = await fcl.query({
-  //       cadence: getNFTsScript,
-  //       args: (arg, t) => [arg(address, t.Address)],
-  //     });
-  //     console.log("minted NFT", result);
-  //     setData({[address]: result});
-  //   } catch (error) {
-  //     console.log("error", error);
-  //   }
-  // };
 
   const getUserNFTs = async () => {
     try {

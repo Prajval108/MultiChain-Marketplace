@@ -10,6 +10,7 @@ import Form1 from "./Components/form1";
 import Signature from "./Components/generate_signature";
 import Info from "./Components/Info";
 import TransferToken from "./Components/TransferToken";
+import { getCreatorScript } from "./cadence/scripts/get_owner";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 // import crypto from "crypto";
@@ -82,6 +83,23 @@ function App() {
     console.log(event);
   });
 
+
+  const getCreator = async () => {
+    try {
+      const result = await fcl.query({
+        cadence: getCreatorScript,
+        args: (arg, t) => [
+          arg(2, t.UInt64),
+          arg(user.addr, t.Address),
+        ],
+      });
+      console.log("123 Creator", result);
+      
+    } catch (error) {
+      console.log("123", error);
+    }
+  };
+
   // const data12 = async () => {
   //   const txStatus =await fcl.authz()
   //   const resolved= await txStatus.resolve();
@@ -104,7 +122,7 @@ function App() {
         fixed="top"
       />
       <hr />
-      {/* <button onClick={()=> check()}>check</button> */}
+      <button onClick={()=> getCreator()}>check</button>
       <Routes>
         <Route path="/" element={<Accordion />} />
         <Route exact path="/home" element={<Cards />} />

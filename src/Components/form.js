@@ -95,7 +95,6 @@ function BasicExample() {
           arg(nameOfNFT, t.String),
           arg(Description, t.String),
           arg(fileUrl, t.String),
-          arg("testendpoint.com", t.String),
           arg(Quantity, t.UInt64),
         ],
         payer: fcl.authz,
